@@ -1,5 +1,4 @@
 ---
----
 - name: Copy a single file to Windows, and keep a backup
   hosts: windows_servers
   tasks:
