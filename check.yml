@@ -1,12 +1,9 @@
 ---
-- name: Test WinRM Connection
+- name: Copy a single file, but keep a backup.
   hosts: windows_servers
-  tasks:
-    - name: Ping Windows Machine
-      win_ping:
-
-- name: Copy a single file, but keep a backup
   ansible.windows.win_copy:
     src: /ansible/projects/java/update/jdk-8u411-windows-x64.exe
-    dest: C:\Temp\jdk-8u411-windows-x64.exe
+    dest: C:\temp\jdk-8u411-windows-x64.exe
     backup: true
+
+
