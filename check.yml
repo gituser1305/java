@@ -4,7 +4,7 @@
   tasks:
     - name: Copy the JDK installer to the remote Windows server
       win_copy:
-        src: myprojects/files/jdk-8u411-windows-x64.exe
+        src: files/jdk-8u411-windows-x64.exe
         dest: C:\temp\jdk-8u411-windows-x64.exe
         backup: true
 
