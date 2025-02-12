@@ -1,24 +1,22 @@
 ---
-- name: Install JDK on Windows
-  hosts: windows-hosts
+- name: Install Java on Windows
+  hosts: all
+  gather_facts: no
   tasks:
-    - name: Copy JDK installer to Windows Hosts
+    - name: Copy JDK Installer
       win_copy:
         src: "/home/ec2-user/jdk-17_windows-x64_bin.exe"
-        dest: "C:\\Users\\Administrator\\Downloads\\jdk-17_windows-x64_bin.exe"
+        dest: "C:\\Users\\bpmdcuser\\Downloads\\jdk-17_windows-x64_bin.exe"
 
-    - name: Install JDK
-      win_shell: |
-        C:\Users\Administrator\Downloads\jdk-17_windows-x64_bin.exe /s
+    - name: Install Java
+      win_package:
+        path: "C:\\Users\\bpmdcuser\\Downloads\\jdk-17_windows-x64_bin.exe"
+        arguments: "/s"
+        state: present
 
-    - name: Set JAVA_HOME environment variable
+    - name: Set JAVA_HOME Environment Variable
       win_environment:
         name: JAVA_HOME
         value: "C:\\Program Files\\Java\\jdk-17"
         state: present
         level: machine
-
-    - name: Add Java to System Path
-      win_path:
-        elements:
-          - "C:\\Program Files\\Java\\jdk-17\\bin"
